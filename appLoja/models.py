@@ -16,5 +16,5 @@ class Produto(models.Model):
 
 class Venda(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.RESTRICT)
-    quantidade = models.FloatField(null=False)
+    quantidade = models.IntegerField(null=False)
     usuario = models.ForeignKey(User, on_delete=models.RESTRICT)
