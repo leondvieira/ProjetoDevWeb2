@@ -1,3 +1,5 @@
+from django.utils.translation import gettext as _
+
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
@@ -52,7 +54,8 @@ class VendaViewSet(viewsets.ModelViewSet):
         id_produto = serializer.data.get("produto")
         produto = Produto.objects.get(id=id_produto)
         if produto.unidade < serializer.data.get("quantidade"):
-            return Response({"details": "Quantidade não disponível no estoque."}, status.HTTP_403_FORBIDDEN)
+            message = _("Not available quantity in stock.")
+            return Response({"detail": message}, status.HTTP_403_FORBIDDEN)
 
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
