@@ -8,7 +8,7 @@ class Categoria(models.Model):
 
 class Produto(models.Model):
     nome = models.CharField(max_length=100)
-    unidade = models.FloatField(default=0)
+    unidade = models.IntegerField(default=0)
     preco = models.FloatField(default=0)
     ativo = models.BooleanField(default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.RESTRICT)
