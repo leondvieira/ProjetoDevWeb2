@@ -34,5 +34,5 @@ class VendaViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, IsOwner]
 
     def get_queryset(self):
-        queryset =  super().get_queryset()
+        queryset = super().get_queryset()
         return queryset.filter(usuario=self.request.user.id)
